@@ -25,7 +25,7 @@ module Grad; class LogReader
   def read_line(line)
     begin
       p_line = @parser.parse line
-      entry_time = Time.strptime(p_line['%t'], "[%d/%b/%Y:%H:%M:%S %Z]").to_i
+      entry_time = Time.strptime(p_line['%t'], "[%Y-%m-%dT%H:%M:%S]").to_i
       entry_uri  = p_line['%r'].gsub(/(GET|POST) | HTTP\/.*/,'')
       entry_resp = p_line['%>s']
       @start_time ||= entry_time
